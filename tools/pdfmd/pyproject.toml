@@ -1,0 +1,117 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pdfmd"
+version = "1.6.0"
+description = "Fast, local, privacy-first PDF to Markdown converter with OCR, multi-language support, table detection, and math preservation"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Michael Neivandt"}
+]
+keywords = [
+    "pdf", 
+    "markdown", 
+    "converter", 
+    "ocr", 
+    "tesseract", 
+    "tables", 
+    "math", 
+    "latex",
+    "privacy",
+    "offline"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Text Processing :: Markup :: Markdown",
+    "Topic :: Multimedia :: Graphics :: Capture :: Scanners",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+dependencies = [
+    "pymupdf>=1.23.0",
+]
+
+[project.optional-dependencies]
+# Basic OCR support (Tesseract via pytesseract)
+ocr = [
+    "pytesseract>=0.3.10",
+    "Pillow>=10.0.0",
+]
+
+# Advanced OCR with OCRmyPDF
+ocrmypdf = [
+    "pytesseract>=0.3.10",
+    "Pillow>=10.0.0",
+    "ocrmypdf>=15.0.0",
+]
+
+# Full installation with all features
+full = [
+    "pytesseract>=0.3.10",
+    "Pillow>=10.0.0",
+    "ocrmypdf>=15.0.0",
+]
+
+# Development tools
+dev = [
+    "pytest>=7.4.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+]
+
+[project.scripts]
+pdfmd = "pdfmd.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/M1ck4/pdfmd"
+Repository = "https://github.com/M1ck4/pdfmd"
+"Bug Tracker" = "https://github.com/M1ck4/pdfmd/issues"
+
+[tool.setuptools]
+packages = ["pdfmd"]
+
+[tool.setuptools.package-data]
+pdfmd = ["py.typed"]
+
+[tool.black]
+line-length = 100
+target-version = ["py38", "py39", "py310", "py311", "py312"]
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true
