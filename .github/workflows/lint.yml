@@ -1,0 +1,30 @@
+name: Lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify:
+    name: Verify vault schema
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Verify required folders + files + frontmatter
+        run: node tools/extract-from-source.mjs verify
+
+      - name: Check no node_modules committed
+        run: |
+          if find . -type d -name node_modules -not -path "./node_modules/*" | grep -q .; then
+            echo "ERROR: node_modules directory found in repo"
+            exit 1
+          fi

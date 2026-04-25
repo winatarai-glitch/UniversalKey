@@ -1,0 +1,17 @@
+{
+  "name": "universalkey",
+  "version": "0.1.0",
+  "description": "Anonymized, domain-agnostic schema skeleton for Obsidian knowledge graphs",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "verify": "node tools/extract-from-source.mjs verify",
+    "scaffold": "node tools/extract-from-source.mjs scaffold",
+    "sync": "node tools/extract-from-source.mjs sync",
+    "pack-init": "node tools/domain-pack-init.mjs",
+    "anonymize": "node tools/anonymize.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

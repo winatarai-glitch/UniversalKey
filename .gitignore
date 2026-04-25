@@ -1,0 +1,95 @@
+# ── runtime config (never commit secrets / per-user state) ───────
+.env
+.env.local
+.env.*.local
+
+# ── personal/project state (gitignored — outside the schema) ─────
+_meta/active-projects.md
+
+# ── ingest sentinels (runtime-only, not durable state) ───────────
+_meta/.ingest-lock
+_meta/.ingest-log.ndjson
+_meta/.ingest-manifest.json
+_meta/.sync-vault.lock
+
+# ── staging area (per-machine, large, transient) ─────────────────
+_raw/*
+!_raw/README.md
+
+# ── Obsidian per-user state ──────────────────────────────────────
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/graph.json
+.obsidian/cache
+.obsidian/types.json
+
+# ── Node ─────────────────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ── Python (pdfmd venv + caches) ─────────────────────────────────
+tools/pdfmd/.venv/
+tools/pdfmd/.egg-info/
+tools/pdfmd/pdfmd.egg-info/
+**/__pycache__/
+*.pyc
+*.pyo
+
+# ── OS junk ──────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Editor / IDE ─────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Logs ─────────────────────────────────────────────────────────
+*.log
+
+# ── Build artifacts (keep schema repo lean) ──────────────────────
+dist/
+build/
+.next/
+.cache/
+
+# ── Binary content (lives in VAULT_PATH, not in the schema repo) ─
+*.pdf
+*.docx
+*.doc
+*.pptx
+*.ppt
+*.odt
+*.odp
+*.epub
+*.mobi
+*.mp3
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.wav
+*.m4a
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+# ── Image binaries (skeleton allows pdfmd doc PNGs only) ─────────
+# Whitelist exceptions for documentation:
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.svg
+!tools/pdfmd/doc/*.png
+!tools/pdfmd/doc/*.svg
