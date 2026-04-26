@@ -2,32 +2,35 @@
 
 Python analyzer for the UniversalKey graph: PageRank, Louvain communities, betweenness centrality, plus a frontmatter typed-edge extraction pass that surfaces ~25k semantic edges (`extends`, `treats`, `contraindicated-in`, etc.) that body-wikilink graph exporters miss.
 
-**Sprint:** B6 (lean) — see `C:\Users\UniversalKey-contributor\.claude\sprint-prompts\B6-analyzer.md`
 **Predecessor:** B4 graph-export tooling (frozen, do not modify)
 **Successor:** B-semantic (deferred ML scope: embeddings, parameter sweeps, external corpus)
 
 ## Install
 
 ```bash
-# Venv on C: ONLY (not D: — exFAT + Python venv is unreliable)
-"C:\Users\UniversalKey-contributor\AppData\Local\Programs\Python\Python313\python.exe" -m venv "C:\Users\UniversalKey-contributor\.venvs\universalkey-analyzer"
+# Create a virtualenv (Python 3.11+)
+python3 -m venv .venv
+source .venv/bin/activate           # Linux/macOS
+# .venv\Scripts\activate.bat         # Windows
 
-"C:\Users\UniversalKey-contributor\.venvs\universalkey-analyzer\Scripts\pip.exe" install -e "D:\UniversalKey\tools\analyzer[dev]"
+pip install -e "./tools/analyzer[dev]"
 ```
+
+> **Note (Windows + exFAT):** if your repo lives on an exFAT volume, create the venv on an NTFS drive instead (e.g. `C:\Users\<you>\.venvs\universalkey-analyzer`). exFAT does not preserve POSIX bits and breaks some Python venv shims.
 
 ## Usage
 
 ```bash
 # Extract frontmatter typed edges from an Obsidian-style vault
 analyzer extract-fm-edges \
-    --vault "D:\My Second Brain" \
-    --out "D:\sprint-work\B6-analyzer\samples\SB-supplemental-edges.json"
+    --vault "<path/to/your/vault>" \
+    --out "./out/supplemental-edges.json"
 
 # Analyze a graph.json (from graph-export.mjs); optionally merge frontmatter edges from a vault
 analyzer analyze \
-    --graph "D:\sprint-work\B4-graph-export\samples\SB-wiki-export-full\graph.json" \
-    --vault "D:\My Second Brain" \
-    --out-dir "D:\sprint-work\B6-analyzer\samples\SB-report"
+    --graph "./out/graph.json" \
+    --vault "<path/to/your/vault>" \
+    --out-dir "./out/report"
 ```
 
 Outputs:
@@ -47,7 +50,7 @@ src/universalkey_analyzer/
 
 ## Edge type vocabulary
 
-17 valid types lifted from `D:\UniversalKey\tools\lib\frontmatter-v2.mjs` lines 113–146:
+17 valid types defined in `tools/lib/frontmatter-v2.mjs`:
 
 **Lineage (7):** `extends`, `refines`, `contradicts`, `challenges`, `historical-basis-for`, `predates`, `reinforced-by`
 
@@ -64,5 +67,5 @@ PageRank pinned `tol=1e-6, max_iter=100, alpha=0.85`. Louvain pinned `random_sta
 ## Tests
 
 ```bash
-"C:\Users\UniversalKey-contributor\.venvs\universalkey-analyzer\Scripts\pytest.exe" tests/ -v
+pytest tests/ -v
 ```

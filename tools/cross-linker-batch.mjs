@@ -28,8 +28,8 @@ const MIN_TERM_LENGTH = 4;
 const SCOPE_DIRS = [
   '30 - Resources/AI Conversations',
   '20 - Areas/Chiropractic Practice/Clinical Letters',
-  '10 - Projects/example-project/Blog Drafts',
-  '10 - Projects/example-project/Articles',
+  '10 - Projects/<your-project>/Blog Drafts',
+  '10 - Projects/<your-project>/Articles',
   '30 - Resources/Research Papers',
   '30 - Resources/Books & Textbooks',
   '30 - Resources/Clinical Knowledge/Conditions',
@@ -57,8 +57,8 @@ const WIKI_DIRS = ['concepts', 'entities', 'skills', 'references', 'synthesis'];
 const COMMIT_AREAS = [
   { pattern: '30 - Resources/AI Conversations',                      msg: 'Sprint 5C: insert cross-links in AI conversations' },
   { pattern: '20 - Areas/Chiropractic Practice/Clinical Letters',     msg: 'Sprint 5C: insert cross-links in clinical letters' },
-  { pattern: '10 - Projects/example-project/Blog Drafts',                  msg: 'Sprint 5C: insert cross-links in blog drafts' },
-  { pattern: '10 - Projects/example-project/Articles',                     msg: 'Sprint 5C: insert cross-links in articles' },
+  { pattern: '10 - Projects/<your-project>/Blog Drafts',                  msg: 'Sprint 5C: insert cross-links in blog drafts' },
+  { pattern: '10 - Projects/<your-project>/Articles',                     msg: 'Sprint 5C: insert cross-links in articles' },
   { pattern: '30 - Resources/Research Papers',                        msg: 'Sprint 5C: insert cross-links in research papers' },
   { pattern: '30 - Resources/Books',                                  msg: 'Sprint 5C: insert cross-links in books' },
   { pattern: '30 - Resources/Clinical Knowledge',                     msg: 'Sprint 6: insert cross-links in clinical knowledge' },

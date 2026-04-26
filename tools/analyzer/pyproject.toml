@@ -7,7 +7,7 @@ name = "universalkey-analyzer"
 version = "0.1.0"
 description = "UniversalKey algorithmic matching engine — graph metrics + frontmatter typed edges"
 requires-python = ">=3.11"
-authors = [{ name = "UniversalKey-contributor" }]
+authors = [{ name = "UniversalKey contributors" }]
 readme = "README.md"
 license = { text = "Proprietary" }
 keywords = ["graph", "pagerank", "louvain", "obsidian", "knowledge-graph"]
