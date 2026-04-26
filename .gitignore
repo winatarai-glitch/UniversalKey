@@ -61,6 +61,9 @@ build/
 .next/
 .cache/
 
+# ── Graph export outputs (graph-export.mjs, can be 10s of MB) ────
+wiki-export/
+
 # ── Binary content (lives in VAULT_PATH, not in the schema repo) ─
 *.pdf
 *.docx
