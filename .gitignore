@@ -103,3 +103,8 @@ wiki-export/
 *.svg
 !tools/pdfmd/doc/*.png
 !tools/pdfmd/doc/*.svg
+
+# ── Private brainstorm scratch (absorbed from D:\Univeral - brainstorm 2026-04-27) ─
+# Contains pre-MVP exploration notes (opportunity catalogue, business models, defensibility,
+# Microsoft meeting prep, etc.). Must stay out of the public schema repo.
+_brainstorm/
