@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "universalkey-analyzer"
+version = "0.1.0"
+description = "UniversalKey algorithmic matching engine — graph metrics + frontmatter typed edges"
+requires-python = ">=3.11"
+authors = [{ name = "UniversalKey-contributor" }]
+readme = "README.md"
+license = { text = "Proprietary" }
+keywords = ["graph", "pagerank", "louvain", "obsidian", "knowledge-graph"]
+classifiers = [
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+dependencies = [
+    "networkx>=3.2",
+    "scipy>=1.11",
+    "python-louvain>=0.16",
+    "PyYAML>=6.0",
+    "click>=8.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=4.1",
+]
+
+[project.scripts]
+analyzer = "universalkey_analyzer.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --tb=short"
