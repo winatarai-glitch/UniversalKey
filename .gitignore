@@ -41,6 +41,13 @@ tools/pdfmd/pdfmd.egg-info/
 *.pyc
 *.pyo
 
+# ── B6 analyzer (Python; venv lives on C: per opener guard) ──────
+tools/analyzer/*.egg-info/
+tools/analyzer/src/*.egg-info/
+tools/analyzer/.pytest_cache/
+tools/analyzer/.coverage
+tools/analyzer/htmlcov/
+
 # ── OS junk ──────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
